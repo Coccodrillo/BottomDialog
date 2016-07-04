@@ -32,6 +32,7 @@ import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v7.view.SupportMenuInflater;
 import android.support.v7.view.menu.MenuBuilder;
@@ -121,7 +122,8 @@ public class BottomDialog {
             items = new ArrayList<>();
             icon = getContext().getResources().getDimensionPixelSize(R.dimen.dimen_32_dp);
             padding = getContext().getResources().getDimensionPixelSize(R.dimen.dimen_8_dp);
-            ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                                                                       ViewGroup.LayoutParams.WRAP_CONTENT);
             container = new LinearLayout(getContext());
             container.setLayoutParams(params);
             container.setBackgroundColor(Color.WHITE);
@@ -168,9 +170,13 @@ public class BottomDialog {
             row.setTypeface(Typeface.DEFAULT_BOLD);
             row.setOnClickListener(this);
             row.setTextColor(Utils.colorStateListText(getContext()));
-            TypedValue typedValue = new TypedValue();
-            getContext().getTheme().resolveAttribute(android.R.attr.selectableItemBackground, typedValue, true);
-            row.setBackgroundResource(typedValue.resourceId);
+            if (Build.VERSION.SDK_INT >= 20) {
+                TypedValue typedValue = new TypedValue();
+                getContext().getTheme().resolveAttribute(android.R.attr.selectableItemBackground, typedValue, true);
+                row.setBackgroundResource(typedValue.resourceId);
+            } else {
+                row.setBackgroundResource(R.drawable.bg_row_default);
+            }
             if (item.getIcon() != null) {
                 row.setCompoundDrawablesWithIntrinsicBounds(icon(item.getIcon()), null, null, null);
                 row.setCompoundDrawablePadding(padding);
