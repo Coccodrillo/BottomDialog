@@ -81,10 +81,15 @@ public class Utils {
     }
 
     public static int getPrimaryColor(Context context) {
-        TypedValue typedValue = new TypedValue();
-        TypedArray typedArray = context.obtainStyledAttributes(typedValue.data, new int[]{16843827});
-        int accent = typedArray.getColor(0, 0);
-        typedArray.recycle();
+        int accent;
+        if (Build.VERSION.SDK_INT >= 20) {
+            TypedValue typedValue = new TypedValue();
+            TypedArray typedArray = context.obtainStyledAttributes(typedValue.data, new int[]{16843827});
+            accent = typedArray.getColor(0, 0);
+            typedArray.recycle();
+        } else {
+            accent = Color.WHITE;
+        }
         return accent;
     }
 
