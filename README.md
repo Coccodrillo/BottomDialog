@@ -1,22 +1,24 @@
 # Bottom Dialog
-[ ![Download](https://api.bintray.com/packages/raphaelbussa/maven/bottom-dialog/images/download.svg) ](https://bintray.com/raphaelbussa/maven/bottom-dialog/_latestVersion) [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-BottomDialog-green.svg?style=true)](https://android-arsenal.com/details/1/3168) [![API](https://img.shields.io/badge/API-11%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=11)
+ Arsenal](https://img.shields.io/badge/Android%20Arsenal-BottomDialog-green.svg?style=true)](https://android-arsenal.com/details/1/3168) [![API](https://img.shields.io/badge/API-11%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=11)
 
 This is a custom dialog attached at the bottom
 
 ![Screen](https://raw.githubusercontent.com/rebus007/BottomDialog/master/img/header.png)
+
+This fork just fixes a few bugs to make it work on SDK>=10, the updated way to import it is
 
 ### Import
 At the moment the library is in my personal maven repo
 ```Gradle
 repositories {
     maven {
-        url 'http://dl.bintray.com/raphaelbussa/maven'
+        url "https://jitpack.io"
     }
 }
 ```
 ```Gradle
 dependencies {
-    compile 'rebus:bottom-dialog:0.0.5'
+    compile 'com.github.coccodrillo:BottomDialog:0.0.7'
 }
 ```
 ### How to use
